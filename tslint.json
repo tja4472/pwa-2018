@@ -1,0 +1,57 @@
+{
+  "rulesDirectory": ["node_modules/codelyzer"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rules": {
+    // codelyzer - recommended
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-attribute-parameter-decorator": true,
+    "no-input-rename": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-forward-ref": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "no-output-named-after-standard-event": true,
+    "max-inline-declarations": true,
+    "no-life-cycle-call": true,
+    "prefer-output-readonly": true,
+    "no-conflicting-life-cycle-hooks": true,
+    "enforce-component-selector": true,
+    "no-queries-parameter": true,
+    // "prefer-inline-decorator": true,
+    //
+    // codelyzer - recommended overrides
+    "prefer-inline-decorator": false, // Play nicely with Prettier
+
+    // "component-selector": [true, "element", "tja", "kebab-case"],
+    //
+    // tslint
+    "interface-name": false,
+    "no-console": false,
+    "deprecation": true,
+    /*
+    "no-submodule-imports": [
+      true,
+      "rxjs",
+      "@angular/platform-browser",
+      "@angular/core/testing",
+      "@angular/router/testing",
+      "@ionic-native"
+    ],    
+    */
+    //
+    // tslint: Rules to remove errors from initial template
+    // To be removed.
+    // "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    // "one-variable-per-declaration": false,
+    "member-access": false,
+    // "member-ordering": false,
+    "no-empty": false,
+    // "jsdoc-format": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false
+  }
+}

@@ -1,0 +1,77 @@
+<ion-list>
+    <ion-grid fixed>
+        <ion-row align-items-stretch>
+
+            <ion-col col-12
+                     col-md-6
+                     align-self-stretch
+                     align-self-center
+                     *ngFor="let item of data">
+                <ion-card>
+                    <ion-card-header>
+                        <ion-item detail-none
+                                  button
+                                  title="Click to edit"
+                                  routerLink="/songs/song-detail/{{ item.id }}">
+                            {{item.title}}
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <tja-song-list-item [label]="'Composer'"
+                                            [data]="item.composer"></tja-song-list-item>
+
+                        <tja-song-list-item [label]="'Has Lyrics'"
+                                            [data]="item.hasLyrics"></tja-song-list-item>
+
+                        <tja-song-list-item [label]="'Lyricist'"
+                                            [data]="item.lyricist"></tja-song-list-item>
+
+
+                        <tja-song-list-item [label]="'Style'"
+                                            [data]="item.style"></tja-song-list-item>
+
+                        <tja-song-list-item [label]="'Key Signature'"
+                                            [data]="item.keySignature"></tja-song-list-item>
+                        <!--
+                        <div>
+                            <span>My Key Signature: </span>{{item.userKeySignature}}</div>
+                        -->
+
+                        <tja-song-list-item [label]="'Time Signature'"
+                                            [data]="item.timeSignature"></tja-song-list-item>
+                        <tja-song-list-item [label]="'Year'"
+                                            [data]="item.year"></tja-song-list-item>
+
+                        <tja-song-list-item [label]="'Comment'"
+                                            [data]="item.comment"
+                                            [lineWrap]=true></tja-song-list-item>
+
+                        <tja-song-list-item [label]="'Also Known As'"
+                                            [data]="item.alsoKnownAs"></tja-song-list-item>
+                        <!--
+                        <div>
+                            <span>isUserSong: </span>{{item.isUserSong}}</div>
+                        <div>
+                            <span>canAddToMySongs: </span>{{canAddToMySongs(item.isUserSong)}}</div>
+                        <div>
+                            <span>isSignedIn: </span>{{isSignedIn()}}</div>
+                        -->
+                        <!--
+                        <ion-button (click)="doAddToMySongs(item.id)"
+                                    slot="end"
+                                    [disabled]="!canAddToMySongs(item.isUserSong)">
+                            Add to my songs
+                        </ion-button>
+
+                         <div *ngIf="isSignedIn()">!!!isSignedIn()!!!</div>
+                        -->
+
+                        <tja-my-key-signature-form *ngIf="isSignedIn()"
+                                                   [keySignature]="item.userKeySignature"
+                                                   (submitted)="onMyKeySignatureSubmitted($event, item.id)"></tja-my-key-signature-form>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-list>

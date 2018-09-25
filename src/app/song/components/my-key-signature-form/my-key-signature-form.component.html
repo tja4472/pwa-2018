@@ -1,0 +1,34 @@
+<form [formGroup]="form"
+      novalidate
+      class="timmy">
+  <ion-list lines="none">
+    <ion-item>
+      <div class="timmy">
+        <ion-label position="stacked"
+                   color="primary">My Key Signature</ion-label>
+        <ion-input formControlName="name"
+                   placeholder="Name"></ion-input>
+      </div>
+    </ion-item>
+    <ion-text *ngIf="error"
+              color="danger">
+      {{ error }}
+    </ion-text>    
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button type="button"
+                    [disabled]="form.pristine"
+                    (click) = "onSubmit(form.value)"
+                    expand="block">Save</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="revert()"
+                    [disabled]="form.pristine"
+                    color="light"
+                    expand="block">Revert</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

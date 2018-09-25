@@ -1,0 +1,11 @@
+<ion-list>
+    <ion-item tappable
+              *ngFor="let item of data"
+              routerLink="/songs/my-songs-detail/{{ item.songId }}">
+        <ion-label>
+            <h2>{{item.songTitle}}</h2>
+            <p>My Key Signature: {{item.keySignature}}</p>
+            <p>Song Key Signature: {{item.songKeySignature}}</p>            
+        </ion-label>
+    </ion-item>
+</ion-list>

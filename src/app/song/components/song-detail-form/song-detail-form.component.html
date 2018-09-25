@@ -1,0 +1,87 @@
+<form [formGroup]="form">
+  <ion-list lines="none">
+    <p>
+      Form Status: {{ form.status }}
+    </p>
+    <p>
+      Form Pristine: {{ form.pristine }}
+    </p>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Title:</ion-label>
+      <ion-input formControlName="title"
+                 placeholder="title"
+                 required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Composer:</ion-label>
+      <ion-input formControlName="composer"
+                 placeholder="Composer"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Has Lyrics?</ion-label>
+      <ion-toggle slot="start"
+                  formControlName="hasLyrics"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Lyricist:</ion-label>
+      <ion-input formControlName="lyricist"
+                 placeholder="Lyricist"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Style:</ion-label>
+      <ion-input formControlName="style"
+                 placeholder="Style"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Key Signature:</ion-label>
+      <ion-input formControlName="keySignature"
+                 placeholder="Key Signature"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Time Signature:</ion-label>
+      <ion-input formControlName="timeSignature"
+                 placeholder="Time Signature"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Year:</ion-label>
+      <ion-input formControlName="year"
+                 placeholder="Year"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Comment:</ion-label>
+      <ion-textarea formControlName="comment"
+                    placeholder="Comment"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"
+                 color="primary">Also Known As:</ion-label>
+      <ion-input formControlName="alsoKnownAs"
+                 placeholder="Also Known As"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button type="button"
+                    [disabled]="!form.valid || form.pristine"
+                    (click)="onSubmit(form.value)"
+                    expand="block">Save</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="revert()"
+                    [disabled]="form.pristine"
+                    color="light"
+                    expand="block">Revert</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

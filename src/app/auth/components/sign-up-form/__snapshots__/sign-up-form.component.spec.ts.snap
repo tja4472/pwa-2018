@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign Up Page ngrx-platform - should compile 1`] = `
+<tja-sign-up-form
+  loginForm={[Function FormGroup]}
+  submitted={[Function EventEmitter]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-invalid"
+    ng-reflect-form="[object Object]"
+    novalidate=""
+  >
+    <ion-list
+      lines="none"
+      ng-reflect-lines="none"
+    >
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Email address
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="username"
+          ng-reflect-name="username"
+          ng-reflect-placeholder="Username"
+          ng-reflect-required=""
+          ng-reflect-type="email"
+          placeholder="Username"
+          required=""
+          type="email"
+        />
+      </ion-item>
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Password
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="password"
+          ng-reflect-name="password"
+          ng-reflect-placeholder="Password"
+          ng-reflect-required=""
+          ng-reflect-type="password"
+          placeholder="Password"
+          required=""
+          type="password"
+        />
+      </ion-item>
+      
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            ng-reflect-disabled="true"
+            ng-reflect-expand="block"
+            ng-reflect-type="submit"
+            type="submit"
+          >
+            Sign Up
+          </ion-button>
+        </ion-col>
+        <ion-col />
+      </ion-row>
+    </ion-grid>
+  </form>
+</tja-sign-up-form>
+`;
+
+exports[`Sign Up Page ngrx-platform - should disable the form if pending 1`] = `
+<tja-sign-up-form
+  loginForm={[Function FormGroup]}
+  submitted={[Function EventEmitter]}
+>
+  <form
+    class="ng-untouched ng-pristine"
+    ng-reflect-form="[object Object]"
+    novalidate=""
+  >
+    <ion-list
+      lines="none"
+      ng-reflect-lines="none"
+    >
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Email address
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine"
+          formcontrolname="username"
+          ng-reflect-name="username"
+          ng-reflect-placeholder="Username"
+          ng-reflect-required=""
+          ng-reflect-type="email"
+          placeholder="Username"
+          required=""
+          type="email"
+        />
+      </ion-item>
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Password
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine"
+          formcontrolname="password"
+          ng-reflect-name="password"
+          ng-reflect-placeholder="Password"
+          ng-reflect-required=""
+          ng-reflect-type="password"
+          placeholder="Password"
+          required=""
+          type="password"
+        />
+      </ion-item>
+      
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            ng-reflect-disabled="true"
+            ng-reflect-expand="block"
+            ng-reflect-type="submit"
+            type="submit"
+          >
+            Sign Up
+          </ion-button>
+        </ion-col>
+        <ion-col />
+      </ion-row>
+    </ion-grid>
+  </form>
+</tja-sign-up-form>
+`;
+
+exports[`Sign Up Page ngrx-platform - should display an error message if provided 1`] = `
+<tja-sign-up-form
+  errorMessage={[Function String]}
+  loginForm={[Function FormGroup]}
+  submitted={[Function EventEmitter]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-invalid"
+    ng-reflect-form="[object Object]"
+    novalidate=""
+  >
+    <ion-list
+      lines="none"
+      ng-reflect-lines="none"
+    >
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Email address
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="username"
+          ng-reflect-name="username"
+          ng-reflect-placeholder="Username"
+          ng-reflect-required=""
+          ng-reflect-type="email"
+          placeholder="Username"
+          required=""
+          type="email"
+        />
+      </ion-item>
+      <ion-item>
+        <ion-label
+          color="primary"
+          ng-reflect-color="primary"
+          ng-reflect-position="stacked"
+          position="stacked"
+        >
+          Password
+        </ion-label>
+        <ion-input
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="password"
+          ng-reflect-name="password"
+          ng-reflect-placeholder="Password"
+          ng-reflect-required=""
+          ng-reflect-type="password"
+          placeholder="Password"
+          required=""
+          type="password"
+        />
+      </ion-item>
+      
+      <ion-text
+        color="danger"
+        ng-reflect-color="danger"
+      >
+         Invalid credentials 
+      </ion-text>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            ng-reflect-disabled="true"
+            ng-reflect-expand="block"
+            ng-reflect-type="submit"
+            type="submit"
+          >
+            Sign Up
+          </ion-button>
+        </ion-col>
+        <ion-col />
+      </ion-row>
+    </ion-grid>
+  </form>
+</tja-sign-up-form>
+`;

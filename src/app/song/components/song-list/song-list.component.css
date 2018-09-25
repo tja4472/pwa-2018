@@ -1,0 +1,16 @@
+.data {
+    color: grey;
+}
+
+.data-comment {
+    color: grey;
+    white-space: pre;
+}
+
+.item {
+  padding-bottom: 5px;
+}
+
+.label {
+    color: blue
+}

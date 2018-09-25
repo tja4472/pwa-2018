@@ -1,0 +1,10 @@
+<div *ngIf="data"
+     class="item">
+  <div class="label">
+    {{label}}
+  </div>
+
+  <div [ngClass]="{'data-comment': lineWrap, 'data': !lineWrap }">
+    {{data}}
+  </div>
+</div>
