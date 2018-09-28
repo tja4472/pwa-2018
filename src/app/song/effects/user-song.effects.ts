@@ -29,18 +29,22 @@ import { UserSong } from '../models/user-song.model';
 
 import { Store } from '@ngrx/store';
 
-import { selectAuthUser } from '../../auth/reducers';
+// import { selectAuthUser } from '../../auth/reducers';
 import * as FromRootReducer from '../reducers';
 
 import { defer, empty, from, Observable, of } from 'rxjs';
 
 import { UserSongDataService } from '../services/user-song.data.service';
 
+/*
 import {
   AuthActionTypes,
   AutoLoginSuccess,
   LoginSuccess,
 } from '../../auth/actions/auth.actions';
+*/
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 @Injectable()
 export class UserSongEffects {
@@ -63,6 +67,7 @@ export class UserSongEffects {
 
   // listen for loginSuccess &  AutoLoginSuccess
 
+  /*
   // tslint:disable-next-line:member-ordering
   @Effect({ dispatch: false })
   public aaaaa$ = this.actions$.pipe(
@@ -74,6 +79,7 @@ export class UserSongEffects {
       console.log('LoginSuccess | AutoLoginSuccess');
     })
   );
+  */
 
   // tslint:disable-next-line:member-ordering
   @Effect({ dispatch: false })
@@ -141,7 +147,7 @@ export class UserSongEffects {
   @Effect()
   init$: Observable<any> = defer(() => of(null)).pipe(
     // withLatestFrom(this.store$.select(selectAuthUser)),
-    combineLatest(this.store$.select(selectAuthUser)),
+    combineLatest(this.store$.select(authQuery.selectAuthUser)),
     tap((x) => console.log('kkkkkkkkkkkkkkkkkkkk>', x)),
     map(([, userModel]) => userModel),
     filter((userModel) => !!userModel),

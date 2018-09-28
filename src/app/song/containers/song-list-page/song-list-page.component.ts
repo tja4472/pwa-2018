@@ -12,7 +12,7 @@ import { UserSong } from '../../models/user-song.model';
 
 import * as fromSong from '../../reducers';
 
-import { selectAuthUser } from '../../../auth/reducers';
+// import { selectAuthUser } from '../../../auth/reducers';
 
 import { UserModel } from '../../../auth/models/user.model';
 
@@ -28,6 +28,8 @@ import {
 } from '../../event-emitter.interfaces';
 
 import { first } from 'rxjs/operators';
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +55,7 @@ export class SongListPageComponent implements OnInit {
       select(fromSong.getSelectSearchText),
       first()
     );
-    this.user$ = this.store.pipe(select(selectAuthUser));
+    this.user$ = this.store.pipe(select(authQuery.selectAuthUser));
   }
 
   ngOnInit() {

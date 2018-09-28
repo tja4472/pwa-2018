@@ -12,23 +12,22 @@ import {
 
 import { select, Store } from '@ngrx/store';
 
-import { selectAuthUser } from '../../auth/reducers';
+// import { selectAuthUser } from '../../auth/reducers';
 import * as FromRootReducer from '../reducers';
 
 import { UserSong } from '../models/user-song.model';
 
 // tslint:disable-next-line:no-submodule-imports
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
-const APP_KEY = 'apps/b-local-song-app-1';
+import { EnvironmentService } from '@app/core/environment.service';
 
-const DATA_COLLECTION = '/user-songs';
-const USERS_COLLECTION = APP_KEY + '/users';
+// const APP_KEY = 'apps/b-local-song-app-1';
 
-/*
-const DATA_COLLECTION = 'tasks';
-const USERS_COLLECTION = 'users';
-*/
+// const DATA_COLLECTION = '/user-songs';
+// const USERS_COLLECTION = APP_KEY + '/users';
+
 interface FirestoreDoc {
   id: string;
   keySignature: string;
@@ -38,17 +37,30 @@ interface FirestoreDoc {
   providedIn: 'root',
 })
 export class UserSongDataService {
+  /*
+  public get dataCollectionPath(): string {
+    return 'apps/' + this.environmentService.appCode + '/songs';
+  }
+  */
+
   //
   private init$ = this.store.pipe(
-    select(selectAuthUser),
+    select(authQuery.selectAuthUser),
     map((x) => x.id),
     filter((userId) => userId !== '')
   );
 
   constructor(
     private store: Store<FromRootReducer.State>,
-    public readonly afs: AngularFirestore
+    public readonly afs: AngularFirestore,
+    public readonly environmentService: EnvironmentService
   ) {}
+
+  public dataCollectionPath(userId: string): string {
+    return (
+      'apps/' + this.environmentService.appCode + '/users/' + userId + '/songs'
+    );
+  }
 
   public getData$(userId: string): Observable<UserSong[]> {
     //
@@ -71,7 +83,7 @@ export class UserSongDataService {
 
   // set(doc) will overwite fields.
   public aaaaInsertItem(item: UserSong) {
-    //
+    //   
     this.init$.pipe(take(1)).subscribe((userId) => {
       // this.store.dispatch(new UpsertItem({ item, userId }));
       console.log('userId>', userId);
@@ -81,7 +93,7 @@ export class UserSongDataService {
       this.firestoreCollection(userId)
         .doc(doc.id)
         .set(doc);
-    });
+    });    
   }
 
   public upsertItem(item: UserSong, userId: string): Promise<void> {
@@ -133,10 +145,13 @@ export class UserSongDataService {
 
   private firestoreCollection(userId: string) {
     //
+    /*
     return this.afs
       .collection(USERS_COLLECTION)
       .doc(userId)
       .collection<FirestoreDoc>(DATA_COLLECTION);
+    */
+    return this.afs.collection<FirestoreDoc>(this.dataCollectionPath(userId));
   }
 
   private toFirestoreDoc(item: UserSong) {

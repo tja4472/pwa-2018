@@ -33,13 +33,16 @@ import { Song } from '../models/song.model';
 
 import { Store } from '@ngrx/store';
 
-import { selectAuthUser } from '../../auth/reducers';
+// import { selectAuthUser } from '../../auth/reducers';
+
 import * as FromRootReducer from '../reducers';
 
 import { defer, empty, from, Observable, of } from 'rxjs';
 
 import { SongDataService } from '../services/song.data.service';
 import { UserSongDataService } from '../services/user-song.data.service';
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 @Injectable()
 export class SongEffects {
@@ -109,7 +112,7 @@ export class SongEffects {
   public SongsPageUpdateUserSong$ = this.actions$.pipe(
     ofType<SongsPageUpdateUserSong>(SongActionTypes.SongsPageUpdateUserSong),
     map((action) => action.payload),
-    withLatestFrom(this.store$.select(selectAuthUser)),
+    withLatestFrom(this.store$.select(authQuery.selectAuthUser)),
     switchMap(([payload, user]) => {
       console.log('#####>', payload, user);
       return this.userSongDataService

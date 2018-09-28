@@ -10,7 +10,7 @@ import {
 } from '../actions/user-song.actions';
 
 // import * as FromAuthSelector from '../auth/auth.selector';
-import { selectAuthUser } from '../../auth/reducers';
+// import { selectAuthUser } from '../../auth/reducers';
 import * as FromRootReducer from '../reducers';
 
 import { Observable } from 'rxjs';
@@ -18,6 +18,8 @@ import { filter, map, take } from 'rxjs/operators';
 
 import { UserSong } from '../models/user-song.model';
 import { ViewUserSong } from '../models/view-user-song.model';
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 // TaskDespatchers??????
 @Injectable({
@@ -27,7 +29,7 @@ export class UserSongService {
   //
 
   private init$ = this.store.pipe(
-    select(selectAuthUser),
+    select(authQuery.selectAuthUser),
     map((x) => x.id),
     filter((userId) => userId !== '')
   );

@@ -13,17 +13,15 @@ import {
 import { Song } from '../models/song.model';
 
 // tslint:disable-next-line:no-submodule-imports
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
-const APP_KEY = 'apps/b-local-song-app-1';
+import { EnvironmentService } from '@app/core/environment.service';
 
-const DATA_COLLECTION = APP_KEY + '/songs';
-const USERS_COLLECTION = APP_KEY + '/users';
+// const APP_KEY = 'apps/b-local-song-app-1';
 
-/*
-const DATA_COLLECTION = 'tasks';
-const USERS_COLLECTION = 'users';
-*/
+// const DATA_COLLECTION = APP_KEY + '/songs';
+// const USERS_COLLECTION = APP_KEY + '/users';
+
 interface FirestoreDoc {
   alsoKnownAs: string;
   comment: string;
@@ -42,7 +40,14 @@ interface FirestoreDoc {
   providedIn: 'root',
 })
 export class SongDataService {
-  constructor(public readonly afs: AngularFirestore) {}
+  public get dataCollectionPath(): string {
+    return 'apps/' + this.environmentService.appCode + '/songs';
+  }
+
+  constructor(
+    public readonly afs: AngularFirestore,
+    public readonly environmentService: EnvironmentService
+  ) {}
 
   /*
         // == startsWith ==
@@ -70,7 +75,7 @@ export class SongDataService {
       // return everything.
       console.log('everything');
       const collection = this.afs.collection<FirestoreDoc>(
-        DATA_COLLECTION,
+        this.dataCollectionPath,
         (ref) => ref.orderBy('title')
       );
 
@@ -94,7 +99,7 @@ export class SongDataService {
     const endcode = frontCode + String.fromCharCode(endCode.charCodeAt(0) + 1);
 
     const filteredCollection = this.afs.collection<FirestoreDoc>(
-      DATA_COLLECTION,
+      this.dataCollectionPath,
       (ref) =>
         ref
           .orderBy('title')
@@ -172,7 +177,7 @@ export class SongDataService {
       this.afs
         // .collection(USERS_COLLECTION)
         // .doc(userId)
-        .collection<FirestoreDoc>(DATA_COLLECTION, (ref) =>
+        .collection<FirestoreDoc>(this.dataCollectionPath, (ref) =>
           ref.orderBy('title')
         )
     );
