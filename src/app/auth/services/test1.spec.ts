@@ -1,3 +1,4 @@
+/*
 import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
 
@@ -195,3 +196,4 @@ describe('Test1: UserInfoDataService - TestBed', () => {
     });
    
   });
+  */

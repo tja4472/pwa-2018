@@ -5,11 +5,34 @@ import { IonicModule } from '@ionic/angular';
 
 import { SignInFormComponent } from '@app/auth/components/sign-in-form/sign-in-form.component';
 
-// import { combineReducers, Store, StoreModule } from '@ngrx/store';
+describe('SignInFormComponent - class tests', () => {
+  it('raises the submitted event when valid form submitted', () =>{
+    const component = new SignInFormComponent();
+    const credentials = { username: 'a.a@a.com', password: '123456789' };
 
-describe('Sign In Page', () => {
-  let fixture: ComponentFixture<SignInFormComponent>;
+    component.loginForm.setValue(credentials);
+    expect(component.loginForm.valid).toBeTruthy();
+
+    component.submitted.subscribe(x => expect(x).toEqual(credentials));
+    component.onSubmit();
+  });
+
+  it('should disable the form if pending', () => {
+    const component = new SignInFormComponent();
+    component.pending = true;
+    expect(component.loginForm.disabled).toBeTruthy();
+  });  
+
+  it('should enable the form if not pending', () => {
+    const component = new SignInFormComponent();
+    component.pending = false;
+    expect(component.loginForm.disabled).toBeFalsy();
+  });  
+});
+
+describe('SignInFormComponent - DOM tests', () => {
   let component: SignInFormComponent;
+  let fixture: ComponentFixture<SignInFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,49 +45,30 @@ describe('Sign In Page', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignInFormComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture.detectChanges();
   });
-
-  /*
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [IonicModule.forRoot(), ReactiveFormsModule],
-      declarations: [SignInFormComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    });
-
-    fixture = TestBed.createComponent(SignInFormComponent);
-    instance = fixture.componentInstance;
-  });
-  */
 
   it('should create', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
+    expect(component).toBeDefined();
   });
 
-  it('ngrx-platform - should compile', () => {
-    fixture.detectChanges();
-    expect(fixture).toMatchSnapshot();
-  });
-
-  it('ngrx-platform - should disable the form if pending', () => {
+  it('should disable the form if pending', () => {
     component.pending = true;
-
     fixture.detectChanges();
-
-    expect(fixture).toMatchSnapshot();
+    expect(component.loginForm.disabled).toBeTruthy();
   });
 
-  it('ngrx-platform - should display an error message if provided', () => {
+  it('should display an error message if provided', () => {
+    const componentEl: HTMLElement = fixture.nativeElement;
     component.errorMessage = 'Invalid credentials';
-
     fixture.detectChanges();
-
-    expect(fixture).toMatchSnapshot();
+    const errorMessage = componentEl.querySelector(
+      '[data-test="error-message"]'
+    );
+    expect(errorMessage.textContent).toContain(component.errorMessage);
   });
 
-  it('ngrx-platform - should emit an event if the form is valid when submitted', () => {
+  it('should emit an event if the form is valid when submitted', () => {
     const credentials = {
       username: 'user',
       password: 'pass',

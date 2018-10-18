@@ -19,33 +19,30 @@ export interface FirestoreDoc {
   todoListId: string;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ConvertService {
-  public toFirestoreDoc(item: UserInfo): FirestoreDoc {
-    //
-    const result: FirestoreDoc = {
-      todoListId: item.todoListId,
-    };
-
-    return result;
+export const fromFirestoreDoc= (x: FirestoreDoc | null): UserInfo | null => {
+  //
+  if (x == null) {
+    return null;
   }
 
-  public fromFirestoreDoc(x: FirestoreDoc | null): UserInfo | null {
-    //
-    if (x == null) {
-      return null;
-    }
+  const result: UserInfo = {
+    todoListId: x.todoListId,
+  };
 
-    const result: UserInfo = {
-      todoListId: x.todoListId,
-    };
+  return result;
+};
 
-    return result;
-  }
-}
+export const toFirestoreDoc = (item: UserInfo): FirestoreDoc => {
+  //
+  const result: FirestoreDoc = {
+    todoListId: item.todoListId,
+  };
 
+  return result;
+};
+
+// Replace fromFirestoreDoc/toFirestoreDoc functions
+// with public methods??
 @Injectable({
   providedIn: 'root',
 })
@@ -53,12 +50,9 @@ export class UserInfoDataService {
   public get usersCollectionPath(): string {
     return 'apps/' + this.environmentService.appCode + '/users';
   }
-  //
-  // Inject fromFirestoreDoc/toFirestoreDoc class?
-  //
+
   constructor(
     public readonly afs: AngularFirestore,
-    private readonly convertService: ConvertService,
     public readonly environmentService: EnvironmentService
   ) {
     console.log('UserInfoDataService:constructor');
@@ -116,11 +110,11 @@ export class UserInfoDataService {
     //
     return this.firestoreDocument(userId)
       .valueChanges()
-      .pipe(map((item) => this.convertService.fromFirestoreDoc(item)));
+      .pipe(map((item) => fromFirestoreDoc(item)));
   }
 
   public save(item: UserInfo, userId: string): Promise<void> {
-    const doc = this.toFirestoreDoc(item);
+    const doc = toFirestoreDoc(item);
     console.log('>> Save>', doc);
     /*
     this.firestoreDocument(userId).valueChanges().pipe(take(1)).subscribe((x) => {
@@ -138,6 +132,7 @@ export class UserInfoDataService {
     // return this.afs.doc<FirestoreDoc>(this.usersCollectionPath + '/' + userId);
   }
 
+  /*
   private toFirestoreDoc(item: UserInfo): FirestoreDoc {
     //
     const result: FirestoreDoc = {
@@ -146,7 +141,7 @@ export class UserInfoDataService {
 
     return result;
   }
-
+  */
   /*
   private fromFirestoreDoc(x: FirestoreDoc | null): UserInfo | null {
     //
