@@ -1,27 +1,3 @@
-## Problems
-
-### 1. Cannot find module '@ionic/core/loader' from 'app-initialize.js'
-
-"@ionic/angular": "4.0.0-beta.11",
-npx jest --no-cache
-
-```sh
-FAIL  src/app/auth/components/sign-in-form/sign-in-form.component.spec.ts
-  ● Test suite failed to run
-
-    Cannot find module '@ionic/core/loader' from 'app-initialize.js'
-
-      at Resolver.resolveModule (node_modules/jest-resolve/build/index.js:221:17)
-      at Object.<anonymous> (node_modules/@ionic/angular/dist/app-initialize.js:1:1)
-```
-
-- ~~Create blank file, `<rootDir>/node_modules/@ionic/core/loader/loader.ts`~~
-- Add to package.json, moduleNameMapper
-
-  ```json
-  "^@ionic/core/loader":"<rootDir>/node_modules/@ionic/core/dist/esm/es5/ionic.define.js"
-  ```
-
 ## Add Auth Module to Ionic App
 
 - tsconfig.json

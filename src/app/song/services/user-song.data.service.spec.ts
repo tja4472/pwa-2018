@@ -25,8 +25,6 @@ describe('Service: UserSongDataService - TestBed', () => {
     // },
   };
 
-  const spyAA = jest.fn();
-
   @Injectable()
   class FakeEnvironmentService extends EnvironmentService {
     get appCode() {
