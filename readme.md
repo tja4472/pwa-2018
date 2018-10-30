@@ -1,3 +1,38 @@
+## Firebase
+
+- environment.ts
+
+  ```ts
+  export const environment = {
+    appCode: 'XXXXX',
+    production: false,
+    firebase: {
+      apiKey: 'XXXXX',
+      authDomain: 'XXXXX',
+      databaseURL: 'XXXXX',
+      projectId: 'XXXXX',
+      storageBucket: 'XXXXX',
+      messagingSenderId: 'XXXXX',
+    },
+  };
+  ```
+
+- environment.prod.ts
+  ```ts
+  export const environment = {
+    appCode: 'XXXXX',
+    production: true,
+    firebase: {
+      apiKey: 'XXXXX',
+      authDomain: 'XXXXX',
+      databaseURL: 'XXXXX',
+      projectId: 'XXXXX',
+      storageBucket: 'XXXXX',
+      messagingSenderId: 'XXXXX',
+    },
+  };
+  ```
+
 ## Add Auth Module to Ionic App
 
 - tsconfig.json
