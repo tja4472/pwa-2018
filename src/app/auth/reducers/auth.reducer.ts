@@ -3,9 +3,9 @@ import { UserModel } from '@app/auth/models/user.model';
 
 export interface AuthState
   extends Readonly<{
-      hasChecked: boolean;
-      user: UserModel | null;
-    }> {}
+    hasChecked: boolean;
+    user: UserModel | null;
+  }> {}
 
 export const initialState: AuthState = {
   hasChecked: false,

@@ -61,7 +61,7 @@ export class SongDetailPageComponent implements OnInit {
 
     // offline problem
     // https://github.com/angular/angularfire2/issues/1453
-    
+
     this.dataService
       .upsertItem(song, '')
       .then(() => {
@@ -76,7 +76,7 @@ export class SongDetailPageComponent implements OnInit {
 */
       })
       .catch((error) => {
-        console.log('onSubmitted:failure');        
+        console.log('onSubmitted:failure');
         console.log('error>', error);
       });
 

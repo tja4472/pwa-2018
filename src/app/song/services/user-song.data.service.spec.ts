@@ -37,14 +37,13 @@ describe('Service: UserSongDataService - TestBed', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        imports: [ StoreModule.forRoot(reducers)],
+      imports: [StoreModule.forRoot(reducers)],
       // Provide both the service-to-test and its dependencies.
       providers: [
         UserSongDataService,
         { provide: EnvironmentService, useClass: FakeEnvironmentService },
         { provide: AngularFirestore, useValue: AngularFirestoreStub },
         // { provide: Store, useValue: StoreStub}
-       
       ],
     });
 
@@ -57,5 +56,5 @@ describe('Service: UserSongDataService - TestBed', () => {
     (service: UserSongDataService) => {
       expect(service).toBeTruthy();
     }
-  ));  
+  ));
 });

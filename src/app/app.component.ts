@@ -32,7 +32,7 @@ export class AppComponent {
       title: 'My Songs',
       url: '/songs/my-songs',
       icon: 'list',
-    },    
+    },
   ];
 
   public user$: Observable<UserModel>;

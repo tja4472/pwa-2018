@@ -42,7 +42,7 @@ describe('Sign Up Page', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
-/*
+  /*
   it('ngrx-platform - should compile', () => {
     fixture.detectChanges();
     expect(fixture).toMatchSnapshot();

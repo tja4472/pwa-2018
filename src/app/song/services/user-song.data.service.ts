@@ -83,7 +83,7 @@ export class UserSongDataService {
 
   // set(doc) will overwite fields.
   public aaaaInsertItem(item: UserSong) {
-    //   
+    //
     this.init$.pipe(take(1)).subscribe((userId) => {
       // this.store.dispatch(new UpsertItem({ item, userId }));
       console.log('userId>', userId);
@@ -93,7 +93,7 @@ export class UserSongDataService {
       this.firestoreCollection(userId)
         .doc(doc.id)
         .set(doc);
-    });    
+    });
   }
 
   public upsertItem(item: UserSong, userId: string): Promise<void> {

@@ -19,7 +19,7 @@ export interface FirestoreDoc {
   todoListId: string;
 }
 
-export const fromFirestoreDoc= (x: FirestoreDoc | null): UserInfo | null => {
+export const fromFirestoreDoc = (x: FirestoreDoc | null): UserInfo | null => {
   //
   if (x == null) {
     return null;

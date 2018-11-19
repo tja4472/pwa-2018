@@ -18,7 +18,10 @@ const selectAuthUser = createSelector(
   (state: AuthState) => state.user
 );
 
-const selectIsLoggedIn = createSelector(selectAuthUser, (user) => !!user);
+const selectIsLoggedIn = createSelector(
+  selectAuthUser,
+  (user) => !!user
+);
 
 /*
 export const selectIsLoggedInChecked = createSelector(

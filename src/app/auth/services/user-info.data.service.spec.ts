@@ -22,19 +22,15 @@ describe('Conversion functions', () => {
     const expectedUserInfo: UserInfo = { todoListId: 'TODO_LIST_ID' };
     const firestoreDoc: FirestoreDoc = { todoListId: 'TODO_LIST_ID' };
 
-    expect(fromFirestoreDoc(firestoreDoc)).toEqual(
-      expectedUserInfo
-    );
+    expect(fromFirestoreDoc(firestoreDoc)).toEqual(expectedUserInfo);
   });
 
   it('#toFirestoreDoc should return FirestoreDoc', () => {
     const userInfo: UserInfo = { todoListId: 'TODO_LIST_ID' };
     const expectedFirestoreDoc: FirestoreDoc = { todoListId: 'TODO_LIST_ID' };
 
-    expect(toFirestoreDoc(userInfo)).toEqual(
-      expectedFirestoreDoc
-    );
-  }); 
+    expect(toFirestoreDoc(userInfo)).toEqual(expectedFirestoreDoc);
+  });
 });
 
 describe('Service: UserInfoDataService - no TestBed', () => {
@@ -44,17 +40,14 @@ describe('Service: UserInfoDataService - no TestBed', () => {
   const environmentService = new EnvironmentService();
 
   beforeEach(() => {
-    service = new UserInfoDataService(
-      afs as any,
-      environmentService
-    );
+    service = new UserInfoDataService(afs as any, environmentService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-/*  
+  /*  
   it('usersCollectionPath should be apps/APP-CODE/users', () => {
     const spy = jest
       .spyOn(environmentService, 'appCode', 'get')
@@ -64,7 +57,7 @@ describe('Service: UserInfoDataService - no TestBed', () => {
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
   });
-*/  
+*/
 });
 
 describe('Service: UserInfoDataService - TestBed', () => {
@@ -77,9 +70,9 @@ describe('Service: UserInfoDataService - TestBed', () => {
 
   @Injectable()
   class FakeEnvironmentService extends EnvironmentService {
-      get appCode() {
-          return 'aa';
-      }
+    get appCode() {
+      return 'aa';
+    }
   }
 
   let environmentService: EnvironmentService;
@@ -105,7 +98,7 @@ describe('Service: UserInfoDataService - TestBed', () => {
       expect(service).toBeTruthy();
     }
   ));
-/*
+  /*
   it('usersCollectionPath should be apps/APP-CODE/users', () => {
     const spy = jest
       .spyOn(environmentService, 'appCode', 'get')
@@ -117,7 +110,7 @@ describe('Service: UserInfoDataService - TestBed', () => {
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
   });
-*/  
+*/
 });
 
 describe('UserInfoDataService - AngularFirestoreStub', () => {
@@ -147,7 +140,7 @@ describe('UserInfoDataService - AngularFirestoreStub', () => {
     userInfoDataService = TestBed.get(UserInfoDataService);
     environmentService = TestBed.get(EnvironmentService);
   });
-/*
+  /*
   it('should be created', inject(
     [UserInfoDataService],
     (service: UserInfoDataService) => {
@@ -155,7 +148,7 @@ describe('UserInfoDataService - AngularFirestoreStub', () => {
     }
   ));
 */
-/*  
+  /*  
   it('usersCollectionPath should be apps/APP-CODE/users', () => {
     // const spy = spyOnProperty(environmentService, 'appCode').and.returnValue(
     //  'APP-CODE'
@@ -170,7 +163,7 @@ describe('UserInfoDataService - AngularFirestoreStub', () => {
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
   });
-*/  
+*/
 });
 
 /*

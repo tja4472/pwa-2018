@@ -6,14 +6,14 @@ import { IonicModule } from '@ionic/angular';
 import { SignInFormComponent } from '@app/auth/components/sign-in-form/sign-in-form.component';
 
 describe('SignInFormComponent - class tests', () => {
-  it('raises the submitted event when valid form submitted', () =>{
+  it('raises the submitted event when valid form submitted', () => {
     const component = new SignInFormComponent();
     const credentials = { username: 'a.a@a.com', password: '123456789' };
 
     component.loginForm.setValue(credentials);
     expect(component.loginForm.valid).toBeTruthy();
 
-    component.submitted.subscribe(x => expect(x).toEqual(credentials));
+    component.submitted.subscribe((x) => expect(x).toEqual(credentials));
     component.onSubmit();
   });
 
@@ -21,13 +21,13 @@ describe('SignInFormComponent - class tests', () => {
     const component = new SignInFormComponent();
     component.pending = true;
     expect(component.loginForm.disabled).toBeTruthy();
-  });  
+  });
 
   it('should enable the form if not pending', () => {
     const component = new SignInFormComponent();
     component.pending = false;
     expect(component.loginForm.disabled).toBeFalsy();
-  });  
+  });
 });
 
 describe('SignInFormComponent - DOM tests', () => {

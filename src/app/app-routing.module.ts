@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'songs',
     loadChildren: 'app/song/song.module#SongModule',
-  },  
+  },
   {
     path: '',
     redirectTo: 'home',
