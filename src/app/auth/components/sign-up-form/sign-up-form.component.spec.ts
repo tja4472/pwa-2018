@@ -1,3 +1,8 @@
+import {
+  Location,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -7,14 +12,18 @@ import { SignUpFormComponent } from '@app/auth/components/sign-up-form/sign-up-f
 
 // import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
-describe('Sign Up Page', () => {
+describe('SignUpFormComponent', () => {
   let fixture: ComponentFixture<SignUpFormComponent>;
   let component: SignUpFormComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [IonicModule, ReactiveFormsModule],
+      imports: [IonicModule.forRoot(), ReactiveFormsModule],
       declarations: [SignUpFormComponent],
+      providers: [
+        Location,
+        { provide: LocationStrategy, useClass: PathLocationStrategy },
+      ],      
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
