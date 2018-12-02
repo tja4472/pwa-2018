@@ -22,7 +22,6 @@ import { authQuery } from '@app/auth/selectors/auth.selectors';
 @Injectable({
   providedIn: 'root',
 })
-@Injectable()
 export class AuthGuardService implements CanActivate {
   constructor(
     private authService: AuthService,
