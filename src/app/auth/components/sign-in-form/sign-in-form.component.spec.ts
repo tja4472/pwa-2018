@@ -46,7 +46,7 @@ describe('SignInFormComponent - DOM tests', () => {
       providers: [
         Location,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-      ],      
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));

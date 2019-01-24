@@ -23,7 +23,7 @@ describe('SignUpFormComponent', () => {
       providers: [
         Location,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-      ],      
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
