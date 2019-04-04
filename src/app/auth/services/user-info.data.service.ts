@@ -11,8 +11,6 @@ import { map, take } from 'rxjs/operators';
 import { newUserInfo, UserInfo } from '@app/auth/models/user-info.model';
 import { EnvironmentService } from '@app/core/environment.service';
 
-// tslint:disable-next-line:no-submodule-imports
-
 /*
 const APP_KEY = 'apps/' + environment.appCode;
 const USERS_COLLECTION = APP_KEY + '/users';

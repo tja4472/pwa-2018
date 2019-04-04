@@ -17,8 +17,6 @@ import { EnvironmentService } from '@app/core/environment.service';
 
 import { Song } from '../models/song.model';
 
-// tslint:disable-next-line:no-submodule-imports
-
 // const APP_KEY = 'apps/b-local-song-app-1';
 
 // const DATA_COLLECTION = APP_KEY + '/songs';

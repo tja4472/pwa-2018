@@ -17,8 +17,6 @@ import { Credentials } from '@app/auth/models/credentials.model';
 import { UserModel } from '@app/auth/models/user.model';
 import { UserInfoDataService } from '@app/auth/services/user-info.data.service';
 
-// tslint:disable-next-line:no-submodule-imports
-
 @Injectable({
   providedIn: 'root',
 })

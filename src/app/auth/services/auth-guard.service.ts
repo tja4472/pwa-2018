@@ -17,8 +17,6 @@ import * as fromAuth from '@app/auth/reducers';
 import { authQuery } from '@app/auth/selectors/auth.selectors';
 import { AuthService } from '@app/auth/services/auth.service';
 
-// tslint:disable-next-line:no-submodule-imports
-
 @Injectable({
   providedIn: 'root',
 })

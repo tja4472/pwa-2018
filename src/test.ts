@@ -6,6 +6,7 @@ import {
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 
+// tslint:disable-next-line: no-submodule-imports
 import 'zone.js/dist/zone-testing';
 
 declare const require: any;

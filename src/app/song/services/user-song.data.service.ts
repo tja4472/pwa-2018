@@ -21,10 +21,6 @@ import { EnvironmentService } from '@app/core/environment.service';
 import { UserSong } from '../models/user-song.model';
 import * as FromRootReducer from '../reducers';
 
-// import { selectAuthUser } from '../../auth/reducers';
-
-// tslint:disable-next-line:no-submodule-imports
-
 // const APP_KEY = 'apps/b-local-song-app-1';
 
 // const DATA_COLLECTION = '/user-songs';
