@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Credentials } from '@app/auth/models/credentials.model';

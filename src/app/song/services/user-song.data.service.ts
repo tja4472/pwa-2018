@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { select, Store } from '@ngrx/store';
+
 import { BehaviorSubject, Observable, pipe } from 'rxjs';
 import {
   catchError,
@@ -10,18 +15,15 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { select, Store } from '@ngrx/store';
-
-// import { selectAuthUser } from '../../auth/reducers';
-import * as FromRootReducer from '../reducers';
+import { authQuery } from '@app/auth/selectors/auth.selectors';
+import { EnvironmentService } from '@app/core/environment.service';
 
 import { UserSong } from '../models/user-song.model';
+import * as FromRootReducer from '../reducers';
+
+// import { selectAuthUser } from '../../auth/reducers';
 
 // tslint:disable-next-line:no-submodule-imports
-import { AngularFirestore } from '@angular/fire/firestore';
-import { authQuery } from '@app/auth/selectors/auth.selectors';
-
-import { EnvironmentService } from '@app/core/environment.service';
 
 // const APP_KEY = 'apps/b-local-song-app-1';
 

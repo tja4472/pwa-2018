@@ -3,33 +3,28 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { BehaviorSubject, Observable, pipe } from 'rxjs';
+import { first } from 'rxjs/operators';
 
-import { ViewSong } from '../../models/view-song.model';
-import { SongService } from '../../services/song.service';
-import { UserSongDataService } from '../../services/user-song.data.service';
-
-import { UserSong } from '../../models/user-song.model';
-
-import * as fromSong from '../../reducers';
-
-// import { selectAuthUser } from '../../../auth/reducers';
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 import { UserModel } from '../../../auth/models/user.model';
-
 import {
   SongsPageDeleteUserSong,
   SongsPageSearch,
   SongsPageUpdateUserSong,
 } from '../../actions/song.actions';
-
 import {
   DeletedMyKeySignaturePayload,
   UpdatedMyKeySignaturePayload,
 } from '../../event-emitter.interfaces';
+import { UserSong } from '../../models/user-song.model';
+import { ViewSong } from '../../models/view-song.model';
+import * as fromSong from '../../reducers';
+import { SongService } from '../../services/song.service';
+import { UserSongDataService } from '../../services/user-song.data.service';
 
-import { first } from 'rxjs/operators';
+// import { selectAuthUser } from '../../../auth/reducers';
 
-import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

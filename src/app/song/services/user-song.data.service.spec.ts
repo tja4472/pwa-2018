@@ -3,12 +3,11 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { EnvironmentService } from '@app/core/environment.service';
-import { UserSongDataService } from '@app/song/services/user-song.data.service';
-
 import { Store, StoreModule } from '@ngrx/store';
 
+import { EnvironmentService } from '@app/core/environment.service';
 import { metaReducers, reducers } from '@app/reducers';
+import { UserSongDataService } from '@app/song/services/user-song.data.service';
 
 describe('Service: UserSongDataService - TestBed', () => {
   const AngularFirestoreStub = {

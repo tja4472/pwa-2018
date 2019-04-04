@@ -1,5 +1,22 @@
 import { Injectable } from '@angular/core';
+
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+
+import { defer, empty, from, Observable, of } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  exhaustMap,
+  filter,
+  map,
+  switchMap,
+  take,
+  tap,
+  withLatestFrom,
+} from 'rxjs/operators';
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 import {
   DatabaseListenForDataStart,
@@ -16,33 +33,13 @@ import {
   UpsertItemError,
   UpsertItemSuccess,
 } from '../actions/song.actions';
-
-import {
-  catchError,
-  concatMap,
-  exhaustMap,
-  filter,
-  map,
-  switchMap,
-  take,
-  tap,
-  withLatestFrom,
-} from 'rxjs/operators';
-
 import { Song } from '../models/song.model';
-
-import { Store } from '@ngrx/store';
-
-// import { selectAuthUser } from '../../auth/reducers';
-
 import * as FromRootReducer from '../reducers';
-
-import { defer, empty, from, Observable, of } from 'rxjs';
-
 import { SongDataService } from '../services/song.data.service';
 import { UserSongDataService } from '../services/user-song.data.service';
 
-import { authQuery } from '@app/auth/selectors/auth.selectors';
+// import { selectAuthUser } from '../../auth/reducers';
+
 
 @Injectable()
 export class SongEffects {

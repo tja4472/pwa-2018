@@ -7,7 +7,6 @@ import {
   SignInPageActions,
   SignUpPageActions,
 } from '@app/auth/actions';
-
 import { Credentials } from '@app/auth/models/credentials.model';
 import { State } from '@app/auth/reducers';
 import { authQuery } from '@app/auth/selectors/auth.selectors';

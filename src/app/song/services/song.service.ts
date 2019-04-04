@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+
 import {
   DatabaseListenForDataStart,
   DatabaseListenForDataStop,
   DeleteItem,
   UpsertItem,
 } from '../actions/song.actions';
-
-// import * as FromAuthSelector from '../auth/auth.selector';
+import { Song } from '../models/song.model';
 import * as FromRootReducer from '../reducers';
 
-import { Observable } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
-
-import { Song } from '../models/song.model';
+// import * as FromAuthSelector from '../auth/auth.selector';
 
 // TaskDespatchers??????
 @Injectable({

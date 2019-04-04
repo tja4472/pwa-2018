@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { UserModel } from '../../../auth/models/user.model';
-import { UserSong } from '../../models/user-song.model';
-import { ViewSong } from '../../models/view-song.model';
-
 import {
   DeletedMyKeySignaturePayload,
   UpdatedMyKeySignaturePayload,
 } from '../../event-emitter.interfaces';
+import { UserSong } from '../../models/user-song.model';
+import { ViewSong } from '../../models/view-song.model';
 
 @Component({
   selector: 'tja-song-list',

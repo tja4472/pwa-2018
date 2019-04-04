@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+
 import { BehaviorSubject, Observable, pipe } from 'rxjs';
 import {
   catchError,
@@ -10,12 +13,11 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import { EnvironmentService } from '@app/core/environment.service';
+
 import { Song } from '../models/song.model';
 
 // tslint:disable-next-line:no-submodule-imports
-import { AngularFirestore } from '@angular/fire/firestore';
-
-import { EnvironmentService } from '@app/core/environment.service';
 
 // const APP_KEY = 'apps/b-local-song-app-1';
 

@@ -2,24 +2,23 @@ import { Injectable } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+import { filter, map, take } from 'rxjs/operators';
+
+import { authQuery } from '@app/auth/selectors/auth.selectors';
+
 import {
   DatabaseListenForDataStart,
   DatabaseListenForDataStop,
   DeleteItem,
   UpsertItem,
 } from '../actions/user-song.actions';
+import { UserSong } from '../models/user-song.model';
+import { ViewUserSong } from '../models/view-user-song.model';
+import * as FromRootReducer from '../reducers';
 
 // import * as FromAuthSelector from '../auth/auth.selector';
 // import { selectAuthUser } from '../../auth/reducers';
-import * as FromRootReducer from '../reducers';
-
-import { Observable } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
-
-import { UserSong } from '../models/user-song.model';
-import { ViewUserSong } from '../models/view-user-song.model';
-
-import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 // TaskDespatchers??????
 @Injectable({

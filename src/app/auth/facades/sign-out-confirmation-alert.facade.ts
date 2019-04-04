@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { SignOutConfirmationAlertActions } from '@app/auth/actions';
-
 import { State } from '@app/auth/reducers';
 
 @Injectable({

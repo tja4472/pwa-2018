@@ -1,18 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 
-import {
-  DatabaseListenForDataStart,
-  DatabaseListenForDataStartError,
-  DatabaseListenForDataStop,
-  DeleteItem,
-  LoadSuccess,
-  UpsertItem,
-  UpsertItemError,
-  UpsertItemSuccess,
-  UserSongActionTypes,
-} from '../actions/user-song.actions';
-
+import { defer, empty, from, Observable, of } from 'rxjs';
 import {
   catchError,
   combineLatest,
@@ -25,16 +16,24 @@ import {
   withLatestFrom,
 } from 'rxjs/operators';
 
-import { UserSong } from '../models/user-song.model';
+import { authQuery } from '@app/auth/selectors/auth.selectors';
 
-import { Store } from '@ngrx/store';
+import {
+  DatabaseListenForDataStart,
+  DatabaseListenForDataStartError,
+  DatabaseListenForDataStop,
+  DeleteItem,
+  LoadSuccess,
+  UpsertItem,
+  UpsertItemError,
+  UpsertItemSuccess,
+  UserSongActionTypes,
+} from '../actions/user-song.actions';
+import { UserSong } from '../models/user-song.model';
+import * as FromRootReducer from '../reducers';
+import { UserSongDataService } from '../services/user-song.data.service';
 
 // import { selectAuthUser } from '../../auth/reducers';
-import * as FromRootReducer from '../reducers';
-
-import { defer, empty, from, Observable, of } from 'rxjs';
-
-import { UserSongDataService } from '../services/user-song.data.service';
 
 /*
 import {
@@ -44,7 +43,6 @@ import {
 } from '../../auth/actions/auth.actions';
 */
 
-import { authQuery } from '@app/auth/selectors/auth.selectors';
 
 @Injectable()
 export class UserSongEffects {

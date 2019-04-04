@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { AlertController } from '@ionic/angular';
-
 import { AlertOptions } from '@ionic/core';
 
 import { SignOutConfirmationAlertFacade } from '@app/auth/facades/sign-out-confirmation-alert.facade';

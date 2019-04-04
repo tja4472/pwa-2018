@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Actions, Effect, ofType } from '@ngrx/effects';
+
 import { defer, from, Observable, of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
@@ -11,7 +12,6 @@ import {
   SignOutConfirmationAlertActions,
   SignUpPageActions,
 } from '@app/auth/actions';
-
 import { AuthService } from '@app/auth/services/auth.service';
 import { SignOutConfirmationAlertService } from '@app/auth/services/sign-out-confirmation-alert.service';
 

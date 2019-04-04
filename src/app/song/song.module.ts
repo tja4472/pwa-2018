@@ -5,30 +5,26 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { reducers } from './reducers';
-
-import { SongEffects } from './effects/song.effects';
-import { UserSongEffects } from './effects/user-song.effects';
-
-import { ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-
 import { MyKeySignatureFormComponent } from './components/my-key-signature-form/my-key-signature-form.component';
 import { SongDetailFormComponent } from './components/song-detail-form/song-detail-form.component';
+import { SongListItemComponent } from './components/song-list-item/song-list-item.component';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { UserSongDetailFormComponent } from './components/user-song-detail-form/user-song-detail-form.component';
 import { UserSongListComponent } from './components/user-song-list/user-song-list.component';
-
 import { SongDetailPageComponent } from './containers/song-detail-page/song-detail-page.component';
 import { SongListPageComponent } from './containers/song-list-page/song-list-page.component';
 import { UserSongDetailPageComponent } from './containers/user-song-detail-page/user-song-detail-page.component';
 import { UserSongListPageComponent } from './containers/user-song-list-page/user-song-list-page.component';
-
-import { SongListItemComponent } from './components/song-list-item/song-list-item.component';
+import { SongEffects } from './effects/song.effects';
+import { UserSongEffects } from './effects/user-song.effects';
+import { reducers } from './reducers';
 import { SongRoutingModule } from './song-routing.module';
 
 @NgModule({

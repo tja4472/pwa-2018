@@ -3,14 +3,13 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import { newUserInfo, UserInfo } from '@app/auth/models/user-info.model';
 import {
   FirestoreDoc,
   fromFirestoreDoc,
   toFirestoreDoc,
   UserInfoDataService,
 } from '@app/auth/services/user-info.data.service';
-
-import { newUserInfo, UserInfo } from '@app/auth/models/user-info.model';
 import { EnvironmentService } from '@app/core/environment.service';
 
 describe('Conversion functions', () => {

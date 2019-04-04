@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { select, Store } from '@ngrx/store';
+
 import { merge, Observable } from 'rxjs';
 import { filter, map, share, switchMap, tap } from 'rxjs/operators';
 
-import { select, Store } from '@ngrx/store';
-
-import { newSong, Song } from '../../models/song.model';
-
 import * as SongActions from '../../actions/song.actions';
+import { newSong, Song } from '../../models/song.model';
 import * as fromSongs from '../../reducers';
 import { SongDataService } from '../../services/song.data.service';
 

@@ -4,15 +4,15 @@ import {
   createSelector,
   MetaReducer,
 } from '@ngrx/store';
+
 import { environment } from '../../../environments/environment';
+import { UserSong } from '../models/user-song.model';
+import { newViewSong, ViewSong } from '../models/view-song.model';
+import { newViewUserSong, ViewUserSong } from '../models/view-user-song.model';
 
 import * as fromSongListPage from './song-list-page.reducer';
 import * as fromSong from './song.reducer';
 import * as fromUserSong from './user-song.reducer';
-
-import { UserSong } from '../models/user-song.model';
-import { newViewSong, ViewSong } from '../models/view-song.model';
-import { newViewUserSong, ViewUserSong } from '../models/view-user-song.model';
 
 export interface SongFeatureState {
   song: fromSong.State;

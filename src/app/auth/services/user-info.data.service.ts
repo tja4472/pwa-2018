@@ -1,15 +1,17 @@
 // tslint:disable:max-classes-per-file
 import { Injectable } from '@angular/core';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+
 // import { Observable } from 'rxjs/Observable';
 // import { map } from 'rxjs/operators/map';
 import { from, Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-// tslint:disable-next-line:no-submodule-imports
-import { AngularFirestore } from '@angular/fire/firestore';
-
 import { newUserInfo, UserInfo } from '@app/auth/models/user-info.model';
 import { EnvironmentService } from '@app/core/environment.service';
+
+// tslint:disable-next-line:no-submodule-imports
 
 /*
 const APP_KEY = 'apps/' + environment.appCode;

@@ -6,18 +6,18 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 
-// tslint:disable-next-line:no-submodule-imports
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import { AuthService } from '@app/auth/services/auth.service';
-
 import { select, Store } from '@ngrx/store';
+
 import { Observable, of } from 'rxjs';
 import { catchError, exhaustMap, filter, map, take, tap } from 'rxjs/operators';
 
 import * as fromAuth from '@app/auth/reducers';
-
 import { authQuery } from '@app/auth/selectors/auth.selectors';
+import { AuthService } from '@app/auth/services/auth.service';
+
+// tslint:disable-next-line:no-submodule-imports
 
 @Injectable({
   providedIn: 'root',
