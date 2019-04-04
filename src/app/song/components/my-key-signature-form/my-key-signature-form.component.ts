@@ -29,7 +29,7 @@ export class MyKeySignatureFormComponent implements OnChanges {
   keySignature: string;
 
   @Output()
-  submitted = new EventEmitter<string>();
+  readonly submitted = new EventEmitter<string>();
 
   form: FormGroup;
 

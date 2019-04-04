@@ -22,11 +22,15 @@ export class SongListComponent {
   user: Readonly<UserModel>;
 
   @Output()
-  addToMySongs = new EventEmitter<string>();
+  readonly addToMySongs = new EventEmitter<string>();
   @Output()
-  deletedMyKeySignature = new EventEmitter<DeletedMyKeySignaturePayload>();
+  readonly deletedMyKeySignature = new EventEmitter<
+    DeletedMyKeySignaturePayload
+  >();
   @Output()
-  updatedMyKeySignature = new EventEmitter<UpdatedMyKeySignaturePayload>();
+  readonly updatedMyKeySignature = new EventEmitter<
+    UpdatedMyKeySignaturePayload
+  >();
   constructor() {}
 
   canAddToMySongs(isUserSong: boolean) {

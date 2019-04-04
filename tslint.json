@@ -30,7 +30,8 @@
     // tslint
     "interface-name": false,
     "no-console": false,
-    "deprecation": true,
+    // Set to true after action conversion.
+    "deprecation": false,
     /*
     "no-submodule-imports": [
       true,

@@ -40,7 +40,7 @@ export class SongDetailFormComponent implements OnChanges {
   song: Song;
 
   @Output()
-  submitted = new EventEmitter<Song>();
+  readonly submitted = new EventEmitter<Song>();
 
   form: FormGroup;
 
