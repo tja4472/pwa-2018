@@ -1,17 +1,10 @@
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-} from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController, Platform } from '@ionic/angular';
 
 import { SignUpFormComponent } from '@app/auth/components/sign-up-form/sign-up-form.component';
-
-// import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
 describe('SignUpFormComponent', () => {
   let fixture: ComponentFixture<SignUpFormComponent>;
@@ -19,13 +12,9 @@ describe('SignUpFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [IonicModule.forRoot(), ReactiveFormsModule],
       declarations: [SignUpFormComponent],
-      providers: [
-        Location,
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule, ReactiveFormsModule, RouterTestingModule],
+      providers: [NavController, Platform],
     }).compileComponents();
   }));
 

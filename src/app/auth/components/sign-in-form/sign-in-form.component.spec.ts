@@ -1,13 +1,8 @@
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-} from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController, Platform } from '@ionic/angular';
 
 import { SignInFormComponent } from '@app/auth/components/sign-in-form/sign-in-form.component';
 
@@ -42,13 +37,9 @@ describe('SignInFormComponent - DOM tests', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [IonicModule.forRoot(), ReactiveFormsModule],
       declarations: [SignInFormComponent],
-      providers: [
-        Location,
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule, ReactiveFormsModule, RouterTestingModule],
+      providers: [NavController, Platform],
     }).compileComponents();
   }));
 

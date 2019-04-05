@@ -1,82 +1,52 @@
-// tslint:disable:max-classes-per-file
-import { Action } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 
-import { Credentials } from '@app/auth/models/credentials.model';
 import { UserModel } from '@app/auth/models/user.model';
 
-export enum AuthApiActionTypes {
-  AutoSignIn = '[Auth/API] Auto Sign In',
-  AutoSignInHaveUser = '[Auth/API] Auto Sign In - Have User',
-  AutoSignInNoUser = '[Auth/API] Auto Sign In - No User',
-  //
-  ShowSignUpPage = '[Auth] Show Sign Up Page',
-  //
-  SignInFailure = '[Auth/API] Sign In - Failure',
-  SignInSuccess = '[Auth/API] Sign In - Success',
-  //
-  SignOut = '[Auth API] Sign Out',
-  SignOutComplete = '[Auth API] Sign Out - Complete',
-  //
-  SignUpFailure = '[Auth/API] Sign Up - Failure',
-  SignUpSuccess = '[Auth/API] Sign Up - Success',
-}
+export const autoSignIn = createAction('[Auth/API] Auto Sign In');
 
-export class AutoSignIn implements Action {
-  readonly type = AuthApiActionTypes.AutoSignIn;
-}
+export const autoSignInHaveUser = createAction(
+  '[Auth/API] Auto Sign In - Have User',
+  props<{ user: UserModel }>()
+);
 
-export class AutoSignInHaveUser implements Action {
-  readonly type = AuthApiActionTypes.AutoSignInHaveUser;
+export const autoSignInNoUser = createAction(
+  '[Auth/API] Auto Sign In - No User'
+);
 
-  constructor(public payload: { user: UserModel }) {}
-}
+export const signInFailure = createAction(
+  '[Auth/API] Sign In - Failure',
+  props<{ error: any }>()
+);
 
-export class AutoSignInNoUser implements Action {
-  readonly type = AuthApiActionTypes.AutoSignInNoUser;
-}
+export const signInSuccess = createAction(
+  '[Auth/API] Sign In - Success',
+  props<{ user: UserModel }>()
+);
 
-export class ShowSignUpPage implements Action {
-  readonly type = AuthApiActionTypes.ShowSignUpPage;
-}
+export const signOut = createAction('[Auth API] Sign Out');
 
-export class SignInSuccess implements Action {
-  readonly type = AuthApiActionTypes.SignInSuccess;
+export const signOutComplete = createAction('[Auth API] Sign Out - Complete');
 
-  constructor(public payload: { user: UserModel }) {}
-}
+export const signUpFailure = createAction(
+  '[Auth/API] Sign Up - Failure',
+  props<{ error: any }>()
+);
 
-export class SignInFailure implements Action {
-  readonly type = AuthApiActionTypes.SignInFailure;
+export const signUpSuccess = createAction(
+  '[Auth/API] Sign Up - Success',
+  props<{ user: UserModel }>()
+);
 
-  constructor(public payload: { error: any }) {}
-}
+const all = union({
+  autoSignIn,
+  autoSignInHaveUser,
+  autoSignInNoUser,
+  signInFailure,
+  signInSuccess,
+  signOut,
+  signOutComplete,
+  signUpFailure,
+  signUpSuccess,
+});
 
-export class SignOut implements Action {
-  readonly type = AuthApiActionTypes.SignOut;
-}
-
-export class SignOutComplete implements Action {
-  readonly type = AuthApiActionTypes.SignOutComplete;
-}
-
-export class SignUpFailure implements Action {
-  readonly type = AuthApiActionTypes.SignUpFailure;
-
-  constructor(public payload: { error: any }) {}
-}
-
-export class SignUpSuccess implements Action {
-  readonly type = AuthApiActionTypes.SignUpSuccess;
-
-  constructor(public payload: { user: UserModel }) {}
-}
-
-export type AuthApiActionsUnion =
-  | AutoSignInHaveUser
-  | AutoSignInNoUser
-  | SignInFailure
-  | SignInSuccess
-  | SignOut
-  | SignOutComplete
-  | SignUpFailure
-  | SignUpSuccess;
+export type AuthApiActionsUnion = typeof all;

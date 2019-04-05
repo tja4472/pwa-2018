@@ -17,15 +17,15 @@ export function authReducer(
   action: AuthApiActions.AuthApiActionsUnion
 ): AuthState {
   switch (action.type) {
-    case AuthApiActions.AuthApiActionTypes.AutoSignInNoUser:
+    case AuthApiActions.autoSignInNoUser.type:
       return { ...state, hasChecked: true };
 
-    case AuthApiActions.AuthApiActionTypes.SignInSuccess:
-    case AuthApiActions.AuthApiActionTypes.AutoSignInHaveUser:
-    case AuthApiActions.AuthApiActionTypes.SignUpSuccess:
-      return { ...state, hasChecked: true, user: action.payload.user };
+    case AuthApiActions.signInSuccess.type:
+    case AuthApiActions.autoSignInHaveUser.type:
+    case AuthApiActions.signUpSuccess.type:
+      return { ...state, hasChecked: true, user: action.user };
 
-    case AuthApiActions.AuthApiActionTypes.SignOut:
+    case AuthApiActions.signOut.type:
       return { ...initialState, hasChecked: true };
 
     default:

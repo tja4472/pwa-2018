@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SignUpPageActions } from '@app/auth/actions';
 import { AuthFacade } from '@app/auth/facades/auth.facade';
 import { Credentials } from '@app/auth/models/credentials.model';
 
@@ -17,6 +18,6 @@ export class SignUpPageComponent implements OnInit {
   ngOnInit() {}
 
   onSubmitted(credentials: Credentials) {
-    this.authFacade.signUpPageSignUp(credentials);
+    this.authFacade.dispatch(SignUpPageActions.signUp({ credentials }));
   }
 }

@@ -1,43 +1,40 @@
-<form [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <ion-text>
-    Email Address: a.a@a.com
-    <br> Password: password
+    Email Address: a.a@a.com <br />
+    Password: password
   </ion-text>
   <ion-list lines="none">
     <ion-item>
-      <ion-label position="stacked"
-                 color="primary">Email address</ion-label>
-      <ion-input formControlName="username"
-                 placeholder="Username"
-                 type="email"
-                 autofocus
-                 required></ion-input>
-      <div *ngIf="username.invalid  && (username.dirty || username.touched)">
-        <div *ngIf="username.hasError('required')">
-          Name is required.
-        </div>
+      <ion-label position="stacked" color="primary">Email address</ion-label>
+      <ion-input
+        data-test="email-input"
+        formControlName="username"
+        placeholder="Username"
+        type="email"
+        autofocus
+        required
+      ></ion-input>
+      <div *ngIf="username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username.hasError('required')">Name is required.</div>
       </div>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked"
-                 color="primary">Password</ion-label>
-      <ion-input type="password"
-                 formControlName="password"
-                 placeholder="Password"
-                 required></ion-input>
-      <div *ngIf="password.invalid  && (password.dirty || password.touched)">
-        <div *ngIf="password.hasError('required')">
-          Password is required.
-        </div>
+      <ion-label position="stacked" color="primary">Password</ion-label>
+      <ion-input
+        data-test="password-input"
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+        required
+      ></ion-input>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <div *ngIf="password.hasError('required')">Password is required.</div>
       </div>
     </ion-item>
 
-    <ion-text data-test="error-message"
-              *ngIf="errorMessage"
-              color="danger">
-      {{errorMessage}}
+    <ion-text data-test="error-message" *ngIf="errorMessage" color="danger">
+      {{ errorMessage }}
       <!--
         <p [hidden]="username.valid || submitted == false" padding-left>
           Username is required
@@ -49,14 +46,14 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button type="submit"
-                    [disabled]="!loginForm.valid"
-                    expand="block">Sign In</ion-button>
+        <ion-button data-test="sign-in-button" type="submit" [disabled]="!loginForm.valid" expand="block"
+          >Sign In</ion-button
+        >
       </ion-col>
       <ion-col>
-        <ion-button (click)="signUp()"
-                    color="light"
-                    expand="block">Sign up</ion-button>
+        <ion-button (click)="signUp()" color="light" expand="block"
+          >Sign up</ion-button
+        >
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -66,6 +63,7 @@
 <pre>
 Form Value: {{ loginForm.value | json }}
 </pre>
+
 <pre>
 Form Status: {{ loginForm.status }}
 </pre>

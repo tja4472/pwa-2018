@@ -19,16 +19,14 @@ import { SignOutConfirmationAlertService } from '@app/auth/services/sign-out-con
 export class AuthEffects {
   @Effect()
   autoSignIn$ = this.actions$.pipe(
-    ofType<AuthApiActions.AutoSignIn>(
-      AuthApiActions.AuthApiActionTypes.AutoSignIn
-    ),
+    ofType(AuthApiActions.autoSignIn.type),
     exhaustMap(() =>
       this.authService.autoSignIn().pipe(
         map((user) => {
           if (!!user) {
-            return new AuthApiActions.AutoSignInHaveUser({ user });
+            return AuthApiActions.autoSignInHaveUser({ user });
           } else {
-            return new AuthApiActions.AutoSignInNoUser();
+            return AuthApiActions.autoSignInNoUser();
           }
         })
       )
@@ -37,9 +35,7 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   doSignUp$ = this.actions$.pipe(
-    ofType<AuthApiActions.ShowSignUpPage>(
-      AuthApiActions.AuthApiActionTypes.ShowSignUpPage
-    ),
+    ofType(SignInPageActions.showSignUpPage.type),
     tap(() => {
       this.router.navigate(['/sign-up']);
     })
@@ -47,37 +43,31 @@ export class AuthEffects {
 
   @Effect()
   signIn$ = this.actions$.pipe(
-    ofType<SignInPageActions.SignIn>(
-      SignInPageActions.SignInPageActionTypes.SignIn
-    ),
-    map((action) => action.payload),
-    exhaustMap((payload) =>
-      this.authService.login(payload.credentials).pipe(
-        map((user) => new AuthApiActions.SignInSuccess({ user })),
-        catchError((error) => of(new AuthApiActions.SignInFailure({ error })))
+    ofType(SignInPageActions.signIn.type),
+    exhaustMap((action) =>
+      this.authService.login(action.credentials).pipe(
+        map((user) => AuthApiActions.signInSuccess({ user })),
+        catchError((error) => of(AuthApiActions.signInFailure({ error })))
       )
     )
   );
 
   @Effect()
   signUp$ = this.actions$.pipe(
-    ofType<SignUpPageActions.SignUp>(
-      SignUpPageActions.SignUpPageActionTypes.SignUp
-    ),
-    map((action) => action.payload),
-    exhaustMap((payload) =>
-      this.authService.signUp(payload.credentials).pipe(
-        map((user) => new AuthApiActions.SignUpSuccess({ user })),
-        catchError((error) => of(new AuthApiActions.SignUpFailure({ error })))
+    ofType(SignUpPageActions.signUp.type),
+    exhaustMap((action) =>
+      this.authService.signUp(action.credentials).pipe(
+        map((user) => AuthApiActions.signUpSuccess({ user })),
+        catchError((error) => of(AuthApiActions.signUpFailure({ error })))
       )
     )
   );
 
   @Effect({ dispatch: false })
   authSignInSuccess$ = this.actions$.pipe(
-    ofType<AuthApiActions.SignInSuccess | AuthApiActions.SignUpSuccess>(
-      AuthApiActions.AuthApiActionTypes.SignInSuccess,
-      AuthApiActions.AuthApiActionTypes.SignUpSuccess
+    ofType(
+      AuthApiActions.signInSuccess.type,
+      AuthApiActions.signUpSuccess.type
     ),
     tap(() => {
       if (this.authService.redirectUrl === '') {
@@ -161,11 +151,11 @@ export class AuthEffects {
 
   @Effect()
   signOut$ = this.actions$.pipe(
-    ofType<AuthApiActions.SignOut>(AuthApiActions.AuthApiActionTypes.SignOut),
+    ofType(AuthApiActions.signOut.type),
     exhaustMap(() =>
       this.authService.signOut().pipe(
         tap(() => this.router.navigate(['/sign-in'])),
-        map(() => new AuthApiActions.SignOutComplete())
+        map(() => AuthApiActions.signOutComplete())
         // catchError(() => of(new SignOutComplete()))
       )
     )
@@ -176,29 +166,29 @@ export class AuthEffects {
   // ==
   @Effect({ dispatch: false })
   signOutConfirmationAlertShow$ = this.actions$.pipe(
-    ofType<SignOutConfirmationAlertActions.Show>(
-      SignOutConfirmationAlertActions.SignOutConfirmationAlertActionTypes.Show
-    ),
+    ofType(SignOutConfirmationAlertActions.show.type),
     tap(() => this.signOutConfirmationAlertService.show())
   );
 
   @Effect()
   signOutConfirmationAccepted$ = this.actions$.pipe(
-    ofType<SignOutConfirmationAlertActions.Accepted>(
-      SignOutConfirmationAlertActions.SignOutConfirmationAlertActionTypes
-        .Accepted
-    ),
-    map(() => new AuthApiActions.SignOut())
+    ofType(SignOutConfirmationAlertActions.accepted.type),
+    map(() => AuthApiActions.signOut())
   );
   // ==
 
   @Effect()
   init$: Observable<any> = defer(() => of(null)).pipe(
-    map(() => new AuthApiActions.AutoSignIn())
+    map(() => AuthApiActions.autoSignIn())
   );
 
   constructor(
-    private actions$: Actions,
+    private actions$: Actions<
+      | AuthApiActions.AuthApiActionsUnion
+      | SignInPageActions.SignInPageActionsUnion
+      | SignUpPageActions.SignUpPageActionsUnion
+      | SignOutConfirmationAlertActions.SignOutConfirmationAlertActionsUnion
+    >,
     private authService: AuthService,
     private router: Router,
     private signOutConfirmationAlertService: SignOutConfirmationAlertService

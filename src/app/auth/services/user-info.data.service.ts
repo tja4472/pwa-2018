@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-// import { Observable } from 'rxjs/Observable';
-// import { map } from 'rxjs/operators/map';
 import { from, Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 

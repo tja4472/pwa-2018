@@ -15,7 +15,7 @@ export class HomePageEffects {
     ofType<fromHomePageActions.SignOut>(
       fromHomePageActions.HomePageActionTypes.SignOut
     ),
-    map(() => new SignOutConfirmationAlertActions.Show())
+    map(() => SignOutConfirmationAlertActions.show())
   );
 
   constructor(private actions$: Actions) {}

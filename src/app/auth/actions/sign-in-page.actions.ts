@@ -1,17 +1,17 @@
-// tslint:disable:max-classes-per-file
-import { Action } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 
 import { Credentials } from '@app/auth/models/credentials.model';
-import { UserModel } from '@app/auth/models/user.model';
 
-export enum SignInPageActionTypes {
-  SignIn = '[Sign In Page] Sign In',
-}
+export const showSignUpPage = createAction('[Sign In Page]  Show Sign Up Page');
 
-export class SignIn implements Action {
-  readonly type = SignInPageActionTypes.SignIn;
+export const signIn = createAction(
+  '[Sign In Page] Sign In',
+  props<{ credentials: Credentials }>()
+);
 
-  constructor(readonly payload: { credentials: Credentials }) {}
-}
+const all = union({
+  showSignUpPage,
+  signIn,
+});
 
-export type SignInPageActionsUnion = SignIn;
+export type SignInPageActionsUnion = typeof all;

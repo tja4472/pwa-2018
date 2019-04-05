@@ -17,7 +17,7 @@ export function signUpPageReducer(
     | SignUpPageActions.SignUpPageActionsUnion
 ): SignUpPageState {
   switch (action.type) {
-    case SignUpPageActions.SignUpPageActionTypes.SignUp: {
+    case SignUpPageActions.signUp.type: {
       return {
         ...state,
         error: null,
@@ -25,7 +25,7 @@ export function signUpPageReducer(
       };
     }
 
-    case AuthApiActions.AuthApiActionTypes.SignUpSuccess: {
+    case AuthApiActions.signUpSuccess.type: {
       return {
         ...state,
         error: null,
@@ -33,10 +33,10 @@ export function signUpPageReducer(
       };
     }
 
-    case AuthApiActions.AuthApiActionTypes.SignUpFailure: {
+    case AuthApiActions.signUpFailure.type: {
       return {
         ...state,
-        error: action.payload.error,
+        error: action.error,
         pending: false,
       };
     }

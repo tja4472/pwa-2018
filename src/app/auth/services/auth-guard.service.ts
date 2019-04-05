@@ -41,10 +41,7 @@ export class AuthGuardService implements CanActivate {
     return false;
   }
   */
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     //
     const url: string = state.url;
     console.log('url>', url);
@@ -53,11 +50,15 @@ export class AuthGuardService implements CanActivate {
     return this.checkStoreAuthentication().pipe(
       map((storeOrApiAuth) => {
         if (!storeOrApiAuth) {
-          this.router.navigate(['/sign-in']);
-          return false;
+          // this.router.navigate(['/sign-in']);
+          // return false;
+          //
+          // https://juristr.com/blog/2018/11/better-route-guard-redirects/
+          // Angular version 7.1.0
+          return this.router.parseUrl('/sign-in');
+        } else {
+          return true;
         }
-
-        return true;
       })
     );
   }
