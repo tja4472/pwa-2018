@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { defer, empty, from, Observable, of } from 'rxjs';
+import { combineLatest, defer, EMPTY, from, Observable, of } from 'rxjs';
 import {
   catchError,
-  combineLatest,
   concatMap,
   filter,
   map,
@@ -42,7 +41,6 @@ import {
   LoginSuccess,
 } from '../../auth/actions/auth.actions';
 */
-
 
 @Injectable()
 export class UserSongEffects {
@@ -105,13 +103,13 @@ export class UserSongEffects {
               );
               // Pass on to higher level.
               // throw error;
-              return empty();
+              return EMPTY;
             })
           );
         }
 
         default: {
-          return empty();
+          return EMPTY;
         }
       }
     }),
@@ -145,7 +143,7 @@ export class UserSongEffects {
   @Effect()
   init$: Observable<any> = defer(() => of(null)).pipe(
     // withLatestFrom(this.store$.select(selectAuthUser)),
-    combineLatest(this.store$.select(authQuery.selectAuthUser)),
+    (o) => combineLatest(o, this.store$.select(authQuery.selectAuthUser)),
     tap((x) => console.log('kkkkkkkkkkkkkkkkkkkk>', x)),
     map(([, userModel]) => userModel),
     filter((userModel) => !!userModel),

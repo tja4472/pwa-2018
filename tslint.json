@@ -30,8 +30,7 @@
     // tslint
     "interface-name": false,
     "no-console": false,
-    // Set to true after action conversion.
-    "deprecation": false,
+    "deprecation": true,
     /*
     "no-submodule-imports": [
       true,
@@ -50,7 +49,7 @@
       "@ngrx",
       "environments",
       "rxjs"
-    ],    
+    ],
     "ordered-imports": {
       "options": {
         "import-sources-order": "case-insensitive",
@@ -70,7 +69,7 @@
           { "match": null, "order": 90 }
         ]
       }
-    },    
+    },
     //
     // tslint: Rules to remove errors from initial template
     // To be removed.
